@@ -1,0 +1,13 @@
+<table style="width:10%">
+  <h4>Ingredients</h4>
+  <% if !@meal_ingredient_list%>
+    <p>No ingredients yet!</p>
+  <% else %>
+    <% @meal_ingredient_list.each do |ingredient| %>
+      <tr>
+        <td><%= link_to "#{ingredient.name}", ingredient , method: 'GET'%></td>
+        <td><%= link_to "Remove", meal_ingredient_path(@meal, ingredient), method: 'DELETE'%></td>
+      </tr>
+    <%end%>
+  <%end%>
+</table>

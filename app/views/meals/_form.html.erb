@@ -1,0 +1,24 @@
+<%= form_for [@meal] do |f| %>
+  <div class="">
+    <%= f.label :name %>
+    <%= f.text_field :name, placeholder: :name %>
+  </div>
+
+  <div class="">
+    <%= f.label :price %>
+    <%= f.text_field :price %>
+  </div>
+
+  <div class="">
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
+
+  <div class="">
+    <%= f.label :calories%>
+    <%= f.text_field :calories %>
+  </div>
+
+  <%= f.submit "Create" %>
+    <%= link_to "Cancel", :back %>
+<% end %>

@@ -1,0 +1,18 @@
+<table style="width:50%">
+  <tr>
+    <th>Meal</th>
+    <th>Price</th>
+    <th>Description</th>
+    <th>Calories</th>
+  </tr>
+
+  <% @meal_list.each do |meal| %>
+    <tr>
+      <td><%= link_to "#{meal.name}", meal , method: 'GET'%></td>
+      <td><%= meal.price %></td>
+      <td><%= meal.description %></td>
+      <td><%= meal.calories %></td>
+    </tr>
+  <%end%>
+</table>
+<%= link_to "Add Meal", new_meal_path %>

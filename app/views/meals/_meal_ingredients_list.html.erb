@@ -1,0 +1,17 @@
+<table style="width:40%">
+  <tr>
+    <th>Ingredient</th>
+    <th>Type</th>
+    <th>Description</th>
+  </tr>
+
+  <% @meal_ingredient_list.each do |ingredient| %>
+    <tr>
+      <td><%= link_to "#{ingredient.name}", ingredient , method: 'GET'%></td>
+      <td><%= ingredient.ing_type %></td>
+      <td><%= ingredient.description %></td>
+      <td><%= link_to "Remove", meal_ingredient_path(@meal, ingredient), method: 'DELETE'%></td>
+    </tr>
+  <%end%>
+</table>
+<td><%= link_to "Add ingredients", meal_ingredients_path(@meal) %></td>

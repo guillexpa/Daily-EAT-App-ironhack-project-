@@ -1,0 +1,15 @@
+<table style="width:25%">
+  <tr>
+    <th>Menu</th>
+    <th>Season</th>
+  </tr>
+
+  <% @menus.each do |menu| %>
+    <tr>
+      <td><%= link_to "#{menu.name}", menu, method: 'GET'%></td>
+      <td><%= menu.season %></td>
+      <td><%= link_to "Remove", menu, method: :delete, data: { confirm: "Are you sure?" } %></td>
+
+    </tr>
+  <%end%>
+</table>

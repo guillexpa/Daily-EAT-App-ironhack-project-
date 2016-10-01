@@ -1,0 +1,5 @@
+<%= form_tag(meal_ingredients_path, :method => "get") do %>
+  <%= label_tag("Search ingredients:") %>
+  <%= text_field_tag(:search) %>
+  <%= submit_tag("Search") %>
+<% end %>

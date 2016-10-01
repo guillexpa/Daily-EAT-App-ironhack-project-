@@ -1,0 +1,16 @@
+<table style="width:40%">
+  <tr>
+    <th>Ingredient</th>
+    <th>Type</th>
+    <th>Description</th>
+  </tr>
+
+  <% @ingredient_list.each do |ingredient| %>
+    <tr>
+      <td><%= link_to "#{ingredient.name}", ingredient , method: 'GET'%></td>
+      <td><%= ingredient.ing_type %></td>
+      <td><%= ingredient.description %></td>
+      <td><%= link_to "Add", meal_ingredients_add_path(@meal.id , ingredient), method: 'POST'%></td>
+    </tr>
+  <%end%>
+</table>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AppDailyEat</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3zXSqSdtrHSUCOT_Sq-q6rOMyj-e59uA&callback=myMap"></script>
+  </head>
+
+  <body>
+
+    <% flash.each do |key, msg|%>
+      <%= content_tag :div, msg, id: key, style: "color:red;"%>
+    <% end %>
+
+    <div class="lateral menu"></div>
+    <ul>
+      <li><%= link_to "My Restaurant" %></li>
+      <li><%= link_to "Meals", meals_path %></li>
+      <li><%= link_to "Ingredients", ingredients_path %></li>
+      <li><%= link_to "Menus", menus_path %></li>
+      <li><button>Add Menu!</button></li>
+    </ul>
+
+    <%= yield %>
+  </body>
+</html>
