@@ -32,9 +32,17 @@ class MealsController < ApplicationController
   end
 
   def destroy
-    if @meal.destroy
-      flash[:notice] = "#{@meal.name} has been deleted!!"
-      redirect_to '/meals'
+    @menu = Menu.find_by(id: params[:menu_id])
+    if !@menu
+      if @meal.destroy
+        flash[:notice] = "#{@meal.name} has been deleted!!"
+        redirect_to '/meals'
+      end
+    else
+      if @menu.meals.destroy(@meal)
+        flash[:notice] = "#{@meal.name} has been deleted from #{@menu.name} menu!!"
+        redirect_to '/meals'
+      end
     end
   end
 

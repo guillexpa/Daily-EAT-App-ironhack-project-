@@ -1,7 +1,5 @@
-<%= @meal.name%>
-<%= @meal.description %>
-<%= @meal.price %></p>
-<%= @meal.calories %>
+<h4><%= @menu.name%></h4>
+<%= @menu.season%>
 
-<%= link_to "Edit", edit_meal_path(@meal) %></td>
-<%= link_to "Remove", "/meals/#{@meal.id}", method: :delete, data: { confirm: "Are you sure?" } %>
+<%= link_to "Edit", select_meals_menu_path(@menu) %>
+<%= link_to "Remove", menu_path, method: :delete, data: { confirm: "Are you sure?" }%>

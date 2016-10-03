@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  root to: 'ingredients#index'
 
   resources :ingredients
 
@@ -10,8 +11,12 @@ Rails.application.routes.draw do
 
   post 'meals/:meal_id/ingredients/:id/add' => 'recipes#add', as: 'meal_ingredients_add'
 
+
+  get 'menus/:menu_id/meals/select' => 'menus#select', as: 'select_meals_menu'
+  post 'menus/:menu_id/meals/:id/add' => 'menus#add', as: 'add_meals_menu'
+
   resources :menus do
-    resources :meals
+    resources :meals, only: [:destroy]
   end
 
 
@@ -23,5 +28,5 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
-  
+
 end

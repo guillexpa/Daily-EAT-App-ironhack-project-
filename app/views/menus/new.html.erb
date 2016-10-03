@@ -1,0 +1,17 @@
+<%= form_for [@menu] do |f| %>
+  <div class="">
+    <%= f.label :name %>
+    <%= f.text_field :name, placeholder: :name %>
+  </div>
+
+  <div class="">
+    <%= f.label :season %>
+    <%= f.select(:season) do %>
+      <% [@season].each do |c| -%>
+        <%= content_tag(:option) %>
+      <% end %>
+    <% end %>
+  </div>
+  <%= f.submit "Continue" %>
+  <%= link_to "Cancel", :back %>
+<% end %>

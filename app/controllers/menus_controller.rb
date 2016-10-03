@@ -10,6 +10,7 @@ class MenusController < ApplicationController
 
   def new
     @menu = Menu.new
+    @seasons = ['Autumn'], ['Summer'], ['Winter'], ['Spring']
   end
 
   def create
@@ -19,15 +20,33 @@ class MenusController < ApplicationController
         format.html # show.html.erb
         format.json { render json: @new_menu, status: :created }
       end
+      redirect_to select_meals_menu_path(@menu)
     end
   end
 
   def edit
   end
 
+  def select
+    @menu = Menu.find_by(id: params[:menu_id])
+    @meal_list = Meal.all
+    @menu_list = @menu.meals
+  end
+
+  def add
+    @menu = Menu.find_by(id: params[:menu_id])
+    if @menu.meals.push(Meal.find_by(id: params[:id]))
+      flash[:success] = "You have added a new meal to your menu"
+      redirect_to :back
+    end
+    # @meal_ingredient_list.each do |ingredient|
+    #   @calories =+ ingredient.calories
+    # end
+  end
+
   def destroy
     @menu.destroy
-    redirect_to root_path
+    redirect_to menus_path
   end
 
   private

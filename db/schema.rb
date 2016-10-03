@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161001215615) do
+ActiveRecord::Schema.define(version: 20161003140353) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string   "name"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20161001215615) do
     t.float    "price"
     t.integer  "calories"
     t.string   "description"
+    t.string   "meal_type"
     t.boolean  "gluten"
     t.boolean  "lactose"
     t.datetime "created_at",  null: false
@@ -55,6 +56,14 @@ ActiveRecord::Schema.define(version: 20161001215615) do
     t.datetime "updated_at",    null: false
     t.index ["ingredient_id"], name: "index_recipes_on_ingredient_id"
     t.index ["meal_id"], name: "index_recipes_on_meal_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "username"
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
 end

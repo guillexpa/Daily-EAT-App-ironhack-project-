@@ -5,9 +5,9 @@ class CreateMeals < ActiveRecord::Migration[5.0]
       t.float :price
       t.integer :calories
       t.string :description
+      t.string :meal_type
       t.boolean :gluten
       t.boolean :lactose
-
       t.timestamps
     end
   end

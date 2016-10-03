@@ -1,10 +1,10 @@
-<table style="width:50%">
+<table class="table table-striped" style="width:50%">
   <tr>
     <th>Ingredient</th>
     <th>Type</th>
     <th>Description</th>
-    <th>gluten</th>
-    <th>Lactose</th>
+    <th>Gluten Free</th>
+    <th>Lactose Free</th>
   </tr>
 
   <% @ingredient_list.each do |ingredient| %>
@@ -12,8 +12,18 @@
       <td><%= link_to "#{ingredient.name}", ingredient , method: 'GET'%></td>
       <td><%= ingredient.ing_type %></td>
       <td><%= ingredient.description %></td>
-      <td><%= ingredient.gluten %></td>
-      <td><%= ingredient.lactose %></td>
+
+      <% if ingredient.gluten%>
+        <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+      <%else%>
+        <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
+      <%end%>
+
+      <% if ingredient.lactose%>
+        <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+      <%else%>
+        <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
+      <%end%>
     </tr>
   <%end%>
 </table>

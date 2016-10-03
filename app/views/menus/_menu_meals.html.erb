@@ -1,0 +1,18 @@
+<table style="width:50%">
+  <tr>
+    <th>Meal</th>
+    <th>Price</th>
+    <th>Description</th>
+    <th>Calories</th>
+  </tr>
+
+  <% @menu_list.each do |meal| %>
+    <tr>
+      <td><%= link_to "#{meal.name}", meal , method: 'GET'%></td>
+      <td><%= meal.price %></td>
+      <td><%= meal.description %></td>
+      <td><%= meal.calories %></td>
+      <td><%= link_to "Remove", menu_meal_path(@menu, meal), method: :delete, data: { confirm: "Are you sure?" } %></td>
+    </tr>
+  <%end%>
+</table>

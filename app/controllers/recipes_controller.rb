@@ -10,11 +10,7 @@ class RecipesController < ApplicationController
       redirect_to :back
     else
       @ingredient_list = Ingredient.all
-    end
-
-    # @meal_ingredient_list.each do |ingredient|
-    #   @calories =+ ingredient.calories
-    # end
+    end  
   end
 
   def add

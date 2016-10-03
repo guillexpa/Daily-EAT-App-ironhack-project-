@@ -16,7 +16,7 @@ class IngredientsController < ApplicationController
   def create
     @ingredient = Ingredient.new(ingredient_params)
     if @ingredient.save
-      flash[:notice] = "Ingredient added!"
+      flash[:success] = "Ingredient added!"
       redirect_to :back
     end
   end
