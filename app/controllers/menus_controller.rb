@@ -5,19 +5,20 @@ class MenusController < ApplicationController
   end
 
   def show
+    @menus = Menu.all
     @meals = @menu.meals
   end
 
   def new
     @menu = Menu.new
-    @seasons = ['Autumn'], ['Summer'], ['Winter'], ['Spring']
+    # @seasons = ['Autumn'], ['Summer'], ['Winter'], ['Spring']
   end
 
   def create
     @menu = Menu.new(menu_params)
     if @menu.save
       respond_to do |format|
-        format.html # show.html.erb
+        format.html
         format.json { render json: @new_menu, status: :created }
       end
       redirect_to select_meals_menu_path(@menu)

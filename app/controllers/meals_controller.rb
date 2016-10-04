@@ -41,7 +41,7 @@ class MealsController < ApplicationController
     else
       if @menu.meals.destroy(@meal)
         flash[:notice] = "#{@meal.name} has been deleted from #{@menu.name} menu!!"
-        redirect_to '/meals'
+        redirect_to :back
       end
     end
   end

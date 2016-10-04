@@ -1,18 +1,24 @@
-<table style="width:50%">
-  <tr>
-    <th>Meal</th>
-    <th>Price</th>
-    <th>Description</th>
-    <th>Calories</th>
-  </tr>
 
-  <% @meal_list.each do |meal| %>
+
+  <table style="width:50%">
     <tr>
-      <td><%= link_to "#{meal.name}", meal , method: 'GET'%></td>
-      <td><%= meal.price %></td>
-      <td><%= meal.description %></td>
-      <td><%= meal.calories %></td>
-      <td><%= link_to "Add", add_meals_menu_path(@menu, meal), method: 'POST' %></td>
+      <th>Meal</th>
+      <th>Price</th>
+      <th>Description</th>
+      <th>Calories</th>
     </tr>
-  <%end%>
-</table>
+
+    <% meals.each do |meal| %>
+      <tr>
+        <td><%= link_to "#{meal.name}", meal , method: 'GET'%></td>
+        <td><%= meal.price %></td>
+        <td><%= meal.description %></td>
+        <td><%= meal.calories %></td>
+        <% if method == :add %>
+            <td><%= link_to "Add", add_meals_menu_path(@menu, meal), method: 'POST' %></td>
+        <% elsif method == :delete %>
+            <td><%= link_to "Remove", menu_meal_path(@menu, meal), method: :delete, data: { confirm: "Are you sure?" }%></td>
+        <%  end %>
+      </tr>
+    <%end%>
+  </table>

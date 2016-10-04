@@ -1,5 +1,9 @@
 <h4><%= @menu.name%></h4>
-<%= @menu.season%>
+Season: <%= @menu.season%><br>
+
+<% @menu.meals.each do |meal| %>
+  <%= meal.name%><br>
+<%end%>
 
 <%= link_to "Edit", select_meals_menu_path(@menu) %>
 <%= link_to "Remove", menu_path, method: :delete, data: { confirm: "Are you sure?" }%>

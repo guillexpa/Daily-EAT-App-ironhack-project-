@@ -12,5 +12,6 @@
  *
  *= require_tree .
  *= require_self
-  *= require_general
+ *= require_sidebar
+ *= require_header
  */

@@ -4,9 +4,10 @@
 
 
 <div class="meal_selection">
-  <%= render partial: 'selection' %>
+  <%= render partial: 'selection', locals:{meals: @meal_list, method: :add} %>
 </div>
 
+
 <div class="menu_meals">
-  <%= render partial: 'menu_meals' %>
+<%= render partial: 'selection', locals:{meals: @menu_list, method: :delete} %>
 </div>
