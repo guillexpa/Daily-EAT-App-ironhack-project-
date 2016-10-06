@@ -44,11 +44,11 @@
       </div>
     </div>
 
-      <% if current_user %>
+      <% if current_user != nil  %>
       <div class="logged-home">
         <div class="row">
           <div class="container-fluid">
-            <% if current_restaurant%>
+            <% if current_restaurant != nil %>
               <div class="col-md-2" style="height:700px">
                 <div class="lateral menu">
                   <div class="list-group">
@@ -57,7 +57,7 @@
                     <%= link_to "Ingredients", ingredients_path, :class => "list-group-item" %>
                     <%= link_to "Menus", menus_path, :class => "list-group-item" %>
                     <%= link_to "<button>Add menu</button>".html_safe, new_menu_path, :class => "list-group-item" %>
-                  </div>                
+                  </div>
                 </div>
               </div>
             <% end %>

@@ -1,11 +1,12 @@
 class MenusController < ApplicationController
   before_action :find_menu, only: [:show, :destroy]
   def index
-    @menus = Menu.all
+
+    @menus = current_restaurant.menus
   end
 
   def show
-    @menus = Menu.all
+    @menus = current_restaurant.menus
     @meals = @menu.meals
   end
 
@@ -14,17 +15,15 @@ class MenusController < ApplicationController
   end
 
   def create
+    @restaurant = current_restaurant
     @menu = Menu.new(
       name: params[:menu][:name],
       season: params[:menu][:season],
       price: params[:menu][:price],
-      restaurant_id: current_user.id
+      restaurant_id: current_restaurant.id
       )
     if @menu.save
-      respond_to do |format|
-        format.html
-        format.json { render json: @menu, status: :created }
-      end
+      @restaurant.menus.push(@menu)
       redirect_to select_meals_menu_path(@menu)
     else
       flash[:error] = "Something went wrong"
@@ -47,9 +46,6 @@ class MenusController < ApplicationController
       flash[:success] = "You have added a new meal to your menu"
       redirect_to :back
     end
-    # @meal_ingredient_list.each do |ingredient|
-    #   @calories =+ ingredient.calories
-    # end
   end
 
   def destroy

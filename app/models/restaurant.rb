@@ -1,6 +1,7 @@
 class Restaurant < ApplicationRecord
   has_many :menus
   belongs_to :user
+  has_one :dailymenu
 
   validates :name, :presence => true, :uniqueness => true, :length => { :in => 3..20 }
   validates :email, :presence => true, :uniqueness => true

@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_restaurant
-    @current_restaurant ||= Restaurant.find_by(id: current_user.id)
+    @current_restaurant ||= Restaurant.find_by(user_id: current_user.id)
   end
 
   def authorize_user

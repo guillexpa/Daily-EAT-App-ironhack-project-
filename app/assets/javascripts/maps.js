@@ -80,24 +80,22 @@ function createRestaurantMarker(position, id) {
   marker.addListener('click', function() {
    map.setZoom(16);
    map.setCenter(marker.getPosition());
-   console.log(id);
    $.ajax({
      type: 'GET',
      url: "/restaurants/"+ id +".json",
      success: function(item){
-      console.log(item);
-      $('#mySidenav').html('<div>' + item.name + '</div>');
-      // var name = $('<div>').html(item.name);
-      // var address = $('<div>').html(item.address);
-      // var city = $('<div>').html(item.city);
-      // var country = $('<div>').html(item.country);
-      // var email = $('<div>').html(item.email);
-      // var phone = $('<div>').html(item.phone);
-      // $('#nameRest').html(name);
-      // $('#directionRest').html(address);
-      // $('#emailRest').html(email);
-      // $('#phoneRest').html(phone);
-
+      var actualSeason = currentSeason();
+      console.log(item.menus);
+      if (item.menus.length == 0){
+        $('#menu').html(" ");
+      } else {
+        item.menus.forEach(function(menu){
+          if (menu.season === actualSeason[0]){
+            $('#menu').html(menu.name);
+          }
+        })
+      }
+      $('#nameRest').html('<div>' + item.name + '</div>');
      },
      error: function (err) {
        console.log(err);
@@ -105,6 +103,25 @@ function createRestaurantMarker(position, id) {
    });
  });
 };
+
+
+function currentSeason(){
+  var year = new Date().getFullYear();
+  var springStart = new Date(year,02,21);
+  var summerStart = new Date(year,06,21);
+  var autumnStart = new Date(year,08,22);
+  var winterStart = new Date(year,11,21);
+  var seasons = {
+    "Summer": [summerStart, autumnStart],
+    "Autumn": [autumnStart, winterStart],
+    "Winter": [winterStart, springStart],
+    "Spring": [springStart, summerStart]
+  }
+  var actualSeason = Object.keys(seasons).filter(function(key){
+    return (new Date() > seasons[key][0] && new Date() < seasons[key][1])
+  })
+  return actualSeason;
+}
 
 
 

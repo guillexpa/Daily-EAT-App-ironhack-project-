@@ -6,15 +6,11 @@ class RestaurantsController < ApplicationController
 
   def show
     restaurant = Restaurant.find_by(id: params[:id])
-    # respond_to do |format|
-    #   format.json { render json: restaurant.to_json(include: :menus), status: :ok }
-    #   format.html { render partial: 'home/restaurant',layout: false, :locals => { :restaurant => restaurant } }
-    # end
-    render json: restaurant.to_json(include: :menus), status: :ok 
+    render json: restaurant.to_json(include: :menus), status: :ok
   end
 
   def show_user_restaurant
-    @restaurant = Restaurant.find_by(id: current_user.id)
+    @restaurant = Restaurant.find_by(user_id: current_user.id)
     render 'show_user_restaurant'
   end
 
@@ -31,10 +27,12 @@ class RestaurantsController < ApplicationController
       phone: params[:restaurant][:phone],
       email: params[:restaurant][:email],
       description: params[:restaurant][:description],
-      user_id: session[:user_id]
+      rest_type: params[:restaurant][:rest_type],
+      user_id: current_user.id
     )
+
     if @restaurant.save
-      redirect_to root_path
+      redirect_to restaurant_user_path
     else
       flash[:error] = "Someting went wrong"
       redirect_to 'restaurant/new'
@@ -47,12 +45,4 @@ class RestaurantsController < ApplicationController
       redirect_to root_path
     end
   end
-
-  private
-  #
-  # def restaurant_params
-  #   params.require(:restaurant).permit(:name, :email, :phone, :address, :city, :country, :description)
-  # end
-
-
 end
