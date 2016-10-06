@@ -1,7 +1,11 @@
-<h4><%= @ingredient.name%></h4>
-<p>Type: <%= @ingredient.ing_type%></p>
-<p>Gluten Free: <%= @ingredient.gluten%></p>
-<p>Lactose Free: <%= @ingredient.lactose%></p>
-<p>description: <%= @ingredient.description%></p>
-<%= link_to "Edit", edit_ingredient_path(@ingredient) %></td>
-<%= link_to "Remove", "/ingredients/#{@ingredient.id}", method: :delete, data: { confirm: "Are you sure?" } %>
+<div class="panel panel-default">
+  <div class="panel-heading"><%= @ingredient.name%></div>
+  <div class="panel-body">
+    <p>Type: <%= @ingredient.ing_type%></p>
+    <p>Gluten Free: <%= @ingredient.gluten%></p>
+    <p>Lactose Free: <%= @ingredient.lactose%></p>
+    <p>description: <%= @ingredient.description%></p>
+    <%= link_to "Edit", edit_ingredient_path(@ingredient) %></td>
+    <%= link_to "Remove", "/ingredients/#{@ingredient.id}", method: :delete, data: { confirm: "Are you sure?" } %>
+  </div>
+</div>

@@ -1,11 +1,17 @@
-<div class="list_ing">
-  <%= render partial: 'list' %>
+
+<div class="col-md-9">
+  <div class="list_ing">
+    <%= render partial: 'list' %>
+  </div>
 </div>
 
-<div class="show_ing">
-  <%= render partial: 'info' %>
-</div>
+<div class="col-md-3">
+  <div class="show_ing">
+    <%= render partial: 'info' %>
+  </div>
 
-<div class="form_ing">
-  <%= render partial: 'form' %>
+  <div class="form_ing">
+    <h4>Change Ingredient</h4>
+    <%= render partial: 'form' %>
+  </div>
 </div>

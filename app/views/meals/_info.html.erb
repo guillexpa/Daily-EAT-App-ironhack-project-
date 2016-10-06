@@ -1,7 +1,12 @@
-<h4><%= @meal.name%></h4>
-<p>Type: <%= @meal.description %></p>
-<p>Price: <%= @meal.price %></p>
-<p>Calories: <%= @meal.calories %></p>
+<div class="panel panel-default">
+  <div class="panel-heading"><%= @meal.name%></div>
+  <div class="panel-body">
+    <p>Type: <%= @meal.description %></p>
+    <p>Price: <%= @meal.price %></p>
+    <p>Calories: <%= @meal.calories %></p>
+    <br>
+    <%= link_to "Edit", edit_meal_path(@meal) %></td>
+    <%= link_to "Remove", "/meals/#{@meal.id}", method: :delete, data: { confirm: "Are you sure?" } %>
 
-<%= link_to "Edit", edit_meal_path(@meal) %></td>
-<%= link_to "Remove", "/meals/#{@meal.id}", method: :delete, data: { confirm: "Are you sure?" } %>
+  </div>
+</div>

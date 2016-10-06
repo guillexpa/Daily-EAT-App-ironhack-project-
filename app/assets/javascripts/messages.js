@@ -6,4 +6,5 @@
 
 $(document).on('ready',function(){
   $('#flash').fadeIn('slow')
+  $('#mySidenav').fadeIn(1000)
 });

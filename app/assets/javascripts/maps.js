@@ -14,10 +14,17 @@
 // }
 
 var map;
+start();
 
-if ("geolocation" in navigator){
-  navigator.geolocation.getCurrentPosition(onLocation, onError);
+
+
+function start(){
+  if ("geolocation" in navigator){
+    navigator.geolocation.getCurrentPosition(onLocation, onError);
+  }
 }
+
+
 
 function onLocation(position){
   var myPosition = {
@@ -28,20 +35,26 @@ function onLocation(position){
   createMap(myPosition);
 }
 
+
+
 function onError(err){
-  console.log("What are you using, IE 7??", err);
+  console.log("No geolocation aviable!!", err);
 }
+
+
 
 function createMap(position){
   map = new google.maps.Map($('#map')[0], {
     mapTypeControl: false,
     streetViewControl: false,
     center: position,
-    zoom: 16
+    zoom: 15
   });
   createMarker(position);
   fetchRestaurants();
 }
+
+
 
 function createMarker(position) {
   var marker = new google.maps.Marker({
@@ -50,39 +63,62 @@ function createMarker(position) {
   })
 };
 
-function createRestaurantMarker(position) {
+
+
+function createRestaurantMarker(position, id) {
   var icon = {
     url: "/rest-icon.png",
     scaledSize: new google.maps.Size(40, 40),
     origin: new google.maps.Point(0,0),
     anchor: new google.maps.Point(0, 0)
-};
+  };
   var marker = new google.maps.Marker({
     position: position,
     map: map,
     icon: icon,
   })
   marker.addListener('click', function() {
-   map.setZoom(17);
+   map.setZoom(16);
    map.setCenter(marker.getPosition());
+   console.log(id);
+   $.ajax({
+     type: 'GET',
+     url: "/restaurants/"+ id +".json",
+     success: function(item){
+      console.log(item);
+      $('#mySidenav').html('<div>' + item.name + '</div>');
+      // var name = $('<div>').html(item.name);
+      // var address = $('<div>').html(item.address);
+      // var city = $('<div>').html(item.city);
+      // var country = $('<div>').html(item.country);
+      // var email = $('<div>').html(item.email);
+      // var phone = $('<div>').html(item.phone);
+      // $('#nameRest').html(name);
+      // $('#directionRest').html(address);
+      // $('#emailRest').html(email);
+      // $('#phoneRest').html(phone);
 
+     },
+     error: function (err) {
+       console.log(err);
+     }
+   });
  });
 };
 
+
+
 function fetchRestaurants(){
-  console.log("hola");
   $.ajax({
     type: 'GET',
-    url: "http://localhost:3000/restaurants.json",
+    url: "/restaurants.json",
     success: function(response){
       response.forEach(function(item){
-        var name = item.name;
         var address = item.address;
         var city = item.city;
         var country = item.country;
         var path = "http://maps.google.com/maps/api/geocode/json?address=" + address + "+" + city + "+" + country;
-        console.log(path);
-        placeRestaurants(path);
+        placeRestaurants(path, item.id);
       })
     },
     error: function (err) {
@@ -92,16 +128,17 @@ function fetchRestaurants(){
 };
 
 
-function placeRestaurants(path){
+
+
+function placeRestaurants(path, id){
   $.ajax({
     type: 'GET',
     url: path,
     success: function(response) {
-      console.log(response);
       var lng = response.results[0].geometry.location.lng;
       var lat = response.results[0].geometry.location.lat;
       var position = { lat,lng };
-      createRestaurantMarker(position);
+      createRestaurantMarker(position, id);
     },
     error: function (err) {
       console.log(err);

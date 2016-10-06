@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  root to: 'home#index'
+  root to: 'home#views'
+
 
   resources :ingredients
 
   resources :restaurants
+
+  get '/restaurant/user' => 'restaurants#show_user_restaurant', as: 'restaurant_user'
 
   resources :meals do
     resources :ingredients, :controller => 'recipes', only: [:index, :destroy]

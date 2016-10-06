@@ -2,7 +2,7 @@ class Meal < ApplicationRecord
   has_many :recipes
   has_many :ingredients, through: :recipes
   has_and_belongs_to_many :menus
-  
+
   after_initialize :set_default_lactose, :if => :new_record?
   after_initialize :set_default_gluten, :if => :new_record?
   validates :name, :presence => true
@@ -14,6 +14,12 @@ class Meal < ApplicationRecord
   def set_default_gluten
     unless self.gluten
       self.gluten = true
+    end
+
+    self.ingredients.each do |ingredient|
+      if ingredient.gluten == false
+        self.gluten = false
+      end
     end
   end
 

@@ -1,28 +1,28 @@
 <%= form_for [@ingredient] do |f| %>
-  <div class="">
+  <div class="form-group">
     <%= f.label :name %>
-    <%= f.text_field :name, placeholder: :name %>
+    <%= f.text_field :name, :class=> "form-control", placeholder: :name %>
   </div>
 
-  <div class="">
+  <div class="form-group">
     <%= f.label :ing_type %>
-    <%= f.text_field :ing_type %>
+    <%= f.text_field :ing_type, :class=> "form-control" %>
   </div>
 
-  <div class="">
+  <div class="form-group">
     <%= f.label :description %>
-    <%= f.text_field :description %>
+    <%= f.text_field :description, :class=> "form-control" %>
   </div>
 
-  <div class="">
+  <div class="form-group">
     <%= f.label 'Gluten free' %>
     <%= f.check_box :gluten %>
   </div>
 
-  <div class="">
+  <div class="form-group">
     <%= f.label 'Lactose free' %>
     <%= f.check_box :lactose %>
   </div>
   <%= f.submit "Create" %>
-    <%= link_to "Cancel", :back %>
+    <%= link_to "Cancel", ingredients_path %>
 <% end %>

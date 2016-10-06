@@ -22,13 +22,22 @@ Ingredient.create(name: 'Garlic', ing_type: 'Species', description: 'Just garlic
 Ingredient.create(name: 'Milk', ing_type: 'Lactic', description: 'Just milk', gluten: true, lactose: false)
 Ingredient.create(name: 'Banana', ing_type: 'Fruit', description: 'Just banana', gluten: true, lactose: false)
 
-Restaurant.create(name: 'Sonora', email: 'sonora@sonora.com', phone: '666999666', address: 'Calle Pamplona, 88', city: 'Barcelona', country: 'Spain', description: 'Mucha carne, much gluten, wow')
+
+
+Restaurant.create(user_id: 1, name: 'Mayura', email: 'mayura@sonora.com', phone: '663453452', address: 'Carrer de Girona, 57', city: 'Barcelona', country: 'Spain', description: 'Mucha carne, much gluten, wow', rest_type: 'Mexican')
+# Restaurant.create(user_id: 2,name: 'Daniel Café', email: 'butt@sonora.com', phone: '666999666', address: 'Avinguda Diagonal, 177', city: 'Barcelona', country: 'Spain', description: 'Mucha carne, much gluten, wow', rest_type: 'Normal')
+# Restaurant.create(user_id: 3,name: 'Sonora', email: 'sonora@sonora.com', phone: '666999666', address: 'Calle Pamplona, 88', city: 'Barcelona', country: 'Spain', description: 'Mucha carne, much gluten, wow', rest_type: 'Chinese')
+# Restaurant.create(user_id: 4,name: 'Can Dende', email: 'candende@gmail.com', phone: '623724829', address: 'Carrer de la Ciutat de Granada, 44', city: 'Barcelona', country: 'Spain', description: 'Very wow, much good', rest_type: 'Mexican')
+# Restaurant.create(user_id: 5,name: 'Els Pollos de Llull', email: 'wow@sonora.com', phone: '672340234', address: 'Carrer de Ramon Turró, 13', city: 'Barcelona', country: 'Spain', description: 'Mucha carne, much gluten, wow', rest_type: 'Chinese')
+
 
 
 Meal.create(name: 'Lasagna', calories: 234, description: 'Filled with beef meat covered with cheese',  meal_type: 'First', price: 3, gluten: false, lactose: false)
 Meal.create(name: 'Caesar Salad', calories: 3453, description: 'Extremely fresh lettuce and chicken with caesar salad', meal_type: 'First', price: 4, gluten: true, lactose: false)
 Meal.create(name: 'Cheeseburger', calories: 567, description: 'Yeah, you know, no need for description, right?', meal_type: 'Second', price: 5, gluten: false, lactose: false)
 Meal.create(name: 'Pizza', calories: 2342, description: 'Extra mozzarella topping', meal_type: 'Second', price: 3, gluten: false, lactose: false)
+
+
 
 Menu.create(name: 'Holiday special', season: 'Summer', price: 10.99, restaurant_id: 1)
 Menu.create(name: 'Winter meals', season: 'Winter', price: 9.99, restaurant_id: 1)

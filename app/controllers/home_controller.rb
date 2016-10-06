@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
 
-  def index
+  def views
     if current_user
       render 'index'
     else

@@ -11,3 +11,7 @@
 <div class="menu_meals">
 <%= render partial: 'selection', locals:{meals: @menu_list, method: :delete} %>
 </div>
+
+<div class="done_button">
+  <%= link_to "<button>Done</button>".html_safe, menus_path, method: 'GET' %>
+</div>

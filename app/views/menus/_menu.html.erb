@@ -1,9 +1,13 @@
-<h4><%= @menu.name%></h4>
-Season: <%= @menu.season%><br>
+<div class="panel panel-default">
+  <div class="panel-heading"><%= @menu.name%></div>
+  <div class="panel-body">
+    <p>Season: <%= @menu.season%></p>
 
-<% @menu.meals.each do |meal| %>
-  <%= meal.name%><br>
-<%end%>
+    <% @menu.meals.each do |meal| %>
+      <%= meal.name%><br>
+    <%end%>
 
-<%= link_to "Edit", select_meals_menu_path(@menu) %>
-<%= link_to "Remove", menu_path, method: :delete, data: { confirm: "Are you sure?" }%>
+    <%= link_to "Edit", select_meals_menu_path(@menu) %>
+    <%= link_to "Remove", menu_path, method: :delete, data: { confirm: "Are you sure?" }%>
+  </div>
+</div>

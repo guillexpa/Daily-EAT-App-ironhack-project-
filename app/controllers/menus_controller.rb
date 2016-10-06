@@ -11,17 +11,24 @@ class MenusController < ApplicationController
 
   def new
     @menu = Menu.new
-    # @seasons = ['Autumn'], ['Summer'], ['Winter'], ['Spring']
   end
 
   def create
-    @menu = Menu.new(menu_params)
+    @menu = Menu.new(
+      name: params[:menu][:name],
+      season: params[:menu][:season],
+      price: params[:menu][:price],
+      restaurant_id: current_user.id
+      )
     if @menu.save
       respond_to do |format|
         format.html
-        format.json { render json: @new_menu, status: :created }
+        format.json { render json: @menu, status: :created }
       end
       redirect_to select_meals_menu_path(@menu)
+    else
+      flash[:error] = "Something went wrong"
+      redirect_to :back
     end
   end
 
@@ -57,7 +64,7 @@ class MenusController < ApplicationController
   end
 
   def menu_params
-    params.require(:menu).permit(:name, :season)
+    params.require(:menu).permit(:name, :season, :price)
   end
 
 end

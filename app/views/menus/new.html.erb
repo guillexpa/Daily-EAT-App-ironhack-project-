@@ -1,17 +1,24 @@
-<%= form_for [@menu] do |f| %>
-  <div class="">
-    <%= f.label :name %>
-    <%= f.text_field :name, placeholder: :name %>
-  </div>
+<div class="col-md-4">
+  <h4>New Menu!</h4>
+  <%= form_for [@menu] do |f| %>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, :class=> "form-control" , placeholder: :name %>
+    </div>
 
-  <div class="">
-    <%= f.label :season %>
-    <%= f.select(:season) do %>
-      <% [@season].each do |c| -%>
-        <%= content_tag(:option) %>
-      <% end %>
-    <% end %>
-  </div>
-  <%= f.submit "Continue" %>
-  <%= link_to "Cancel", :back %>
-<% end %>
+    <div class="form-group">
+      <%= f.label :price %>
+      <%= f.number_field :price, :class=> "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :season %>
+      <%= f.select :season, options_for_select(["Summer", "Autumn", "Spring", "Winter"]), :class=> "form-control"  %>
+    </div>
+
+
+    <%= f.submit "Continue" %>
+    <%= link_to "Cancel", :back %>
+  <% end %>
+
+</div>

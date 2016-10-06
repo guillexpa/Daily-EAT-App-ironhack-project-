@@ -1,8 +1,11 @@
-<div class="row">
-  <div class="col-md-12" style="text-align: center">
-    <p>
-      <%= link_to "Home", root_path %>
-    </p>
-    <p style="font-size: 120%" >Copyright 2016</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12" style="text-align: center">
+      <p>
+        <%= link_to "Home", root_path %> | 
+        <%= link_to "Logout!", "/logout", method: 'DELETE' %>
+      </p>
+      <p style="font-size: 100%" >Copyright 2016</p>
+    </div>
   </div>
 </div>

@@ -13,65 +13,77 @@
   </head>
 
   <body>
-    <!-- Modal -->
-    <div class="modal fade" id="introModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h4 class="modal-title">Welcome!</h4>
-          </div>
-          <div class="modal-body">
-            ...
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-
-    <div class="row">
-      <div class="header">
-        <%= render partial: 'layouts/header' %>
-      </div>
+    <div class="header">
+      <%= render partial: 'layouts/header' %>
     </div>
-
-
     <div class="flash_messages" id="flash" style="display:none" >
       <%= render partial: 'layouts/messages' %>
     </div>
 
-      <% if current_user %>
-      <div class="row">
-        <div class="container-fluid">
-          <div class="col-md-2" style="height:700px">
-            <div class="lateral menu">
-              <ul>
-                <li><%= link_to "My Restaurant" %></li>
-                <li><%= link_to "Meals", meals_path %></li>
-                <li><%= link_to "Ingredients", ingredients_path %></li>
-                <li><%= link_to "Menus", menus_path %></li>
-                <li><%= link_to "<button>Add menu</button>".html_safe, new_menu_path %></li>
-              </ul>
-            </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Welcome to DailyEAT</h4>
           </div>
+          <div class="modal-body">
 
-          <div clsas="col-md-9">
-              <%= yield %>
+            <p>You are about to enter to DailyEAT, an application designed for restaurant managers to create and display easily your daily menus. The concept is simple: you just have to load your aviable meals and ingredients to the platform, and generate your menus. Once you have choose your menu, it will be displayed on the app so the users can see it.  </p>
+            <p>So, for now you just need to sign up your profile. Then we'll guide you step by step to register your restaurant</p><br>
+            <div class="button-modal">
+              <%= button_to "Register your restaurant", '/signup',  :class => "btn btn-default", :method => :get %>
+            </div><br>
+            <p>On the other side, if you </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Take me to the map!</button>
           </div>
         </div>
       </div>
+    </div>
+
+      <% if current_user %>
+      <div class="logged-home">
+        <div class="row">
+          <div class="container-fluid">
+            <% if current_restaurant%>
+              <div class="col-md-2" style="height:700px">
+                <div class="lateral menu">
+                  <div class="list-group">
+                    <%= link_to "My Restaurant", restaurant_user_path , method: 'GET', :class => "list-group-item"%>
+                    <%= link_to "Meals", meals_path, :class => "list-group-item" %>
+                    <%= link_to "Ingredients", ingredients_path, :class => "list-group-item" %>
+                    <%= link_to "Menus", menus_path, :class => "list-group-item" %>
+                    <%= link_to "<button>Add menu</button>".html_safe, new_menu_path, :class => "list-group-item" %>
+                  </div>                
+                </div>
+              </div>
+            <% end %>
+
+            <div class="col-md-10">
+              <%= yield %>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <% else %>
+        <div class="home">
           <%= yield %>
         </div>
       <% end %>
 
 
-    <div class="header">
+
+
+
+
+
+    <footer class="navbar-fixed-bottom">
       <%= render partial: 'layouts/footer' %>
-    </div>
+    </footer>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </body>

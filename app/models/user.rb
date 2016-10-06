@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
+  has_one :restaurant
   # after_initialize :set_default_role, :if => :new_record?
   validates :username, :presence => true, :uniqueness => true, :length => { :in => 3..20 }
   validates :email, :presence => true, :uniqueness => true
