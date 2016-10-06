@@ -103,8 +103,26 @@ function createRestaurantMarker(position, id) {
         } else {
           item.menus.forEach(function(menu){
             if (menu.season === actualSeason[0]){
-              $('#menu').html("Today's menu:  " + menu.name);
-
+              $('#menu').append('#nameMenu').html("Today's menu:  " + menu.name);
+              $('#menuPrice').append('#nameMenu').html("Price: " + menu.price + "€");
+              var i = 0;
+              $('#menuMeals').empty()
+              menu.meals.forEach(function(meal){
+                console.log(meal.name);
+                $('#menuMeals').append("<li>" + meal.name + "</li>");
+              });
+              // var meals = menu.meals;
+              // var menuList = $('ul.mylist')
+              // $.each(countries, function(i)
+              // {
+              //     var li = $('<li/>')
+              //         .addClass('ui-menu-item')
+              //         .appendTo(cList);
+              //     var aaa = $('<p/>')
+              //         .addClass('ui-all')
+              //         .text(meals[i])
+              //         .appendTo(li);
+              // });
 
             }
           })
@@ -113,7 +131,6 @@ function createRestaurantMarker(position, id) {
         $('#restAddress').html("Address: " + item.address +", "+ item.city);
         $('#restEmail').html("Email: " + item.email);
         $('#restPhone').html("Phone: " + item.phone);
-        console.log(restaurant_name);
        },
        error: function (err) {
          console.log(err);

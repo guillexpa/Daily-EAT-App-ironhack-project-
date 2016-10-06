@@ -6,6 +6,18 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# User.create(username: 'Escalicha', email: 'escalicha@yea.com', password_digest: BCrypt::Password.create("my password"))
+# User.create(username: 'Pau', email: 'pau@yea.com', password_digest: 'cjhenlwieuo3209iekdls')
+# User.create(username: 'Jose', email: 'jose@yea.com', password_digest: '29834u9rjf8923jdm')
+# User.create(username: 'Antoni', email: 'antoni@hotmail.com', password_digest: 'woiemried,epokol32')
+# User.create(username: 'Daniela', email: 'daniela@yea.com', password_digest: 'qweu9138742343rf23dewdwewrt9381jrio2301938')
+# User.create(username: 'Sophie', email: 'sohpie@hotmail.com', password_digest: '22423r91387493812930ikdwd301938')
+# User.create(username: 'Rodrigo', email: 'rodrigo@yea.com', password_digest: 'qweu9138749381jrio2301938')
+# User.create(username: 'Edu', email: 'edu@yea.com', password_digest: '111111111$$$$23e3d4t42e3dwr')
+# User.create(username: 'Lilith', email: 'lilith@hotmail.com', password_digest: 'wcreg4567689876543|@#~')
+# User.create(username: 'Thor', email: 'thor@hotmail.com', password_digest: '@qerqdw#sfwecd')
+# User.create(username: 'Matias', email: 'matias@yea.com', password_digest: '$$23r3d233$243ew')
+
 
 
 Ingredient.create(name: 'Tomato', ing_type: 'Vegetable', description: 'Fresh from Valencia', gluten: true, lactose: true)
@@ -24,18 +36,20 @@ Ingredient.create(name: 'Banana', ing_type: 'Fruit', description: 'Just banana',
 
 
 
-Restaurant.create(user_id: 1, name: 'Mayura', email: 'mayura@sonora.com', phone: '663453452', address: 'Carrer de Girona, 57', city: 'Barcelona', country: 'Spain', description: 'Mucha carne, much gluten, wow', rest_type: 'Mexican')
-# Restaurant.create(user_id: 2,name: 'Daniel Café', email: 'butt@sonora.com', phone: '666999666', address: 'Avinguda Diagonal, 177', city: 'Barcelona', country: 'Spain', description: 'Mucha carne, much gluten, wow', rest_type: 'Normal')
+# Restaurant.create(user_id: 1, name: 'Mayura', email: 'mayura@food.com', phone: '663453452', address: 'Carrer de Girona, 57', city: 'Barcelona', country: 'Spain', description: 'Mucha carne, much gluten, wow', rest_type: 'Mexican')
+# Restaurant.create(user_id: 2,name: 'Daniel Café', email: 'butt@yeah.com', phone: '666999666', address: 'Avinguda Diagonal, 177', city: 'Barcelona', country: 'Spain', description: 'Mucha carne, much gluten, wow', rest_type: 'Normal')
 # Restaurant.create(user_id: 3,name: 'Sonora', email: 'sonora@sonora.com', phone: '666999666', address: 'Calle Pamplona, 88', city: 'Barcelona', country: 'Spain', description: 'Mucha carne, much gluten, wow', rest_type: 'Chinese')
 # Restaurant.create(user_id: 4,name: 'Can Dende', email: 'candende@gmail.com', phone: '623724829', address: 'Carrer de la Ciutat de Granada, 44', city: 'Barcelona', country: 'Spain', description: 'Very wow, much good', rest_type: 'Mexican')
-# Restaurant.create(user_id: 5,name: 'Els Pollos de Llull', email: 'wow@sonora.com', phone: '672340234', address: 'Carrer de Ramon Turró, 13', city: 'Barcelona', country: 'Spain', description: 'Mucha carne, much gluten, wow', rest_type: 'Chinese')
+# Restaurant.create(user_id: 5,name: 'Els Pollos de Llull', email: 'wow@sfood.com', phone: '672340234', address: 'Carrer de Ramon Turró, 13', city: 'Barcelona', country: 'Spain', description: 'Mucha carne, much gluten, wow', rest_type: 'Chinese')
+#
+
 
 
 
 Meal.create(name: 'Lasagna', calories: 234, description: 'Filled with beef meat covered with cheese',  meal_type: 'Starter', price: 3, gluten: false, lactose: false)
 Meal.create(name: 'Caesar Salad', calories: 3453, description: 'Extremely fresh lettuce and chicken with caesar salad', meal_type: 'Starter', price: 4, gluten: true, lactose: false)
 Meal.create(name: 'Cheeseburger', calories: 567, description: 'Yeah, you know, no need for description, right?', meal_type: 'Main', price: 5, gluten: false, lactose: false)
-Meal.create(name: 'Pizza', calories: 2342, description: 'Extra mozzarella topping', meal_type: 'Main', price: 3, gluten: false, lactose: false)
+Meal.create(name: 'Four Seasons Pizza', calories: 2342, description: 'Extra mozzarella topping', meal_type: 'Main', price: 3, gluten: false, lactose: false)
 Meal.create(name: 'Caesar Salad', calories: 2342, description: 'Extra mozzarella topping', meal_type: 'Main', price: 3, gluten: false, lactose: false)
 Meal.create(name: 'Beaf Steak with Roquefort Sauce', calories: 2342, description: 'Extra mozzarella topping', meal_type: 'Main', price: 3, gluten: false, lactose: false)
 Meal.create(name: 'Stuffed Mushrooms', calories: 2342, description: 'Extra mozzarella topping', meal_type: 'Main', price: 3, gluten: true, lactose: false)
@@ -44,7 +58,7 @@ Meal.create(name: 'Pizza', calories: 2342, description: 'Extra mozzarella toppin
 
 
 
-Menu.create(name: 'Holiday special', season: 'Summer', price: 10.99, restaurant_id: 1)
-Menu.create(name: 'Winter meals', season: 'Winter', price: 9.99, restaurant_id: 1)
-Menu.create(name: 'Oktoberfest', season: 'Autumn', price: 12.59, restaurant_id: 1)
-Menu.create(name: 'Spring Menu', season: 'Spring', price: 11.99, restaurant_id: 1)
+# Menu.create(name: 'Holiday special', season: 'Summer', price: 10.99, restaurant_id: 2)
+# Menu.create(name: 'Winter meals', season: 'Winter', price: 9.99, restaurant_id: 2)
+# Menu.create(name: 'Oktoberfest', season: 'Autumn', price: 12.59, restaurant_id: 2)
+# Menu.create(name: 'Spring Menu', season: 'Spring', price: 11.99, restaurant_id: 2)
