@@ -32,10 +32,15 @@ Restaurant.create(user_id: 1, name: 'Mayura', email: 'mayura@sonora.com', phone:
 
 
 
-Meal.create(name: 'Lasagna', calories: 234, description: 'Filled with beef meat covered with cheese',  meal_type: 'First', price: 3, gluten: false, lactose: false)
-Meal.create(name: 'Caesar Salad', calories: 3453, description: 'Extremely fresh lettuce and chicken with caesar salad', meal_type: 'First', price: 4, gluten: true, lactose: false)
-Meal.create(name: 'Cheeseburger', calories: 567, description: 'Yeah, you know, no need for description, right?', meal_type: 'Second', price: 5, gluten: false, lactose: false)
-Meal.create(name: 'Pizza', calories: 2342, description: 'Extra mozzarella topping', meal_type: 'Second', price: 3, gluten: false, lactose: false)
+Meal.create(name: 'Lasagna', calories: 234, description: 'Filled with beef meat covered with cheese',  meal_type: 'Starter', price: 3, gluten: false, lactose: false)
+Meal.create(name: 'Caesar Salad', calories: 3453, description: 'Extremely fresh lettuce and chicken with caesar salad', meal_type: 'Starter', price: 4, gluten: true, lactose: false)
+Meal.create(name: 'Cheeseburger', calories: 567, description: 'Yeah, you know, no need for description, right?', meal_type: 'Main', price: 5, gluten: false, lactose: false)
+Meal.create(name: 'Pizza', calories: 2342, description: 'Extra mozzarella topping', meal_type: 'Main', price: 3, gluten: false, lactose: false)
+Meal.create(name: 'Caesar Salad', calories: 2342, description: 'Extra mozzarella topping', meal_type: 'Main', price: 3, gluten: false, lactose: false)
+Meal.create(name: 'Beaf Steak with Roquefort Sauce', calories: 2342, description: 'Extra mozzarella topping', meal_type: 'Main', price: 3, gluten: false, lactose: false)
+Meal.create(name: 'Stuffed Mushrooms', calories: 2342, description: 'Extra mozzarella topping', meal_type: 'Main', price: 3, gluten: true, lactose: false)
+Meal.create(name: 'Pizza', calories: 2342, description: 'Extra mozzarella topping', meal_type: 'Main', price: 3, gluten: false, lactose: false)
+Meal.create(name: 'Pizza', calories: 2342, description: 'Extra mozzarella topping', meal_type: 'Main', price: 3, gluten: false, lactose: false)
 
 
 

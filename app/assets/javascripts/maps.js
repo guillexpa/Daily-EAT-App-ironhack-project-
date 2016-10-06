@@ -16,6 +16,18 @@
 var map;
 start();
 
+$(function() {
+  var restaurant_name = $('<div>').attr( "id", "restName")
+  var restaurant_address = $('<div>').attr( "id", "restAddress")
+  var restaurant_email = $('<div>').attr( "id", "restEmail")
+  var restaurant_phone = $('<div>').attr( "id", "restPhone")
+
+  $('#nameRest').append(restaurant_name);
+  $('#nameRest').append(restaurant_address);
+  $('#nameRest').append(restaurant_email);
+  $('#nameRest').append(restaurant_phone);
+});
+
 
 
 function start(){
@@ -48,7 +60,7 @@ function createMap(position){
     mapTypeControl: false,
     streetViewControl: false,
     center: position,
-    zoom: 15
+    zoom: 16
   });
   createMarker(position);
   fetchRestaurants();
@@ -78,28 +90,34 @@ function createRestaurantMarker(position, id) {
     icon: icon,
   })
   marker.addListener('click', function() {
-   map.setZoom(16);
-   map.setCenter(marker.getPosition());
-   $.ajax({
-     type: 'GET',
-     url: "/restaurants/"+ id +".json",
-     success: function(item){
-      var actualSeason = currentSeason();
-      console.log(item.menus);
-      if (item.menus.length == 0){
-        $('#menu').html(" ");
-      } else {
-        item.menus.forEach(function(menu){
-          if (menu.season === actualSeason[0]){
-            $('#menu').html(menu.name);
-          }
-        })
-      }
-      $('#nameRest').html('<div>' + item.name + '</div>');
-     },
-     error: function (err) {
-       console.log(err);
-     }
+    map.setZoom(16);
+    map.setCenter(marker.getPosition());
+
+     $.ajax({
+       type: 'GET',
+       url: "/restaurants/"+ id +".json",
+       success: function(item){
+        var actualSeason = currentSeason();
+        if (item.menus.length == 0){
+          $('#menu').html(" ");
+        } else {
+          item.menus.forEach(function(menu){
+            if (menu.season === actualSeason[0]){
+              $('#menu').html("Today's menu:  " + menu.name);
+
+
+            }
+          })
+        }
+        $('#restName').html("Name: " + item.name);
+        $('#restAddress').html("Address: " + item.address +", "+ item.city);
+        $('#restEmail').html("Email: " + item.email);
+        $('#restPhone').html("Phone: " + item.phone);
+        console.log(restaurant_name);
+       },
+       error: function (err) {
+         console.log(err);
+       }
    });
  });
 };

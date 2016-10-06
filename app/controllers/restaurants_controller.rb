@@ -6,7 +6,7 @@ class RestaurantsController < ApplicationController
 
   def show
     restaurant = Restaurant.find_by(id: params[:id])
-    render json: restaurant.to_json(include: :menus), status: :ok
+    render json: restaurant.to_json(:include => { :menus => {include: :meals}}), status: :ok
   end
 
   def show_user_restaurant

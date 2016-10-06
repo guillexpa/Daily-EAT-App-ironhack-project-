@@ -80,9 +80,9 @@ footer{
   text-align: center;
 }
 
-@media screen and (min-width: 768px) {
+/*@media screen and (min-width: 768px) {
 	#myModal .modal-dialog  {width:900px;}
-}
+}*/
 
 .logged-home {
   margin-top: 100px;
