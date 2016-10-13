@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Project for the IronHack Web Development coding bootcamp, that consist in a highly inmersive programming course (+ 500h). This project has been done in two weeks with Ruby on Rails, Javascript (and jQuery), HTML5 and CSS3, using responsive design with Bootstrap.
 
-Things you may want to cover:
+# To-Do
 
-* Ruby version
+* Javascript code for Google Maps needs refactor (class Map, class Restaurant maybe)
 
-* System dependencies
+* Improving the responsive design (not fully working)
 
-* Configuration
+* Active Record queries that are repeated shoud be in models.
 
-* Database creation
+* Database migration to PosgreSQL and deployment to HerokuApp.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* And more for sure...
